@@ -44,85 +44,33 @@ int main() {
 //         return head;
 //     }
 // };
+//
 
-// class MyLinkedList {
-// private:
-//     ListNode* head;
-//     int size;
-
+// class BrowserHistory {
 // public:
-//     MyLinkedList() {
-//         head = NULL;
-//         size = 0;
+//     BrowserHistory(string homepage) {
+//         history.push_back(homepage);
+//         currentIndex = 0;
 //     }
     
-//     int get(int index) {
-//         if (index < 0 || index >= size) {
-//             return -1;
-//         }
-//         ListNode* current = head;
-//         for (int i = 0; i < index; ++i) {
-//             current = current->next;
-//         }
-//         return current->val;
+//     void visit(string url) {
+//         // Clear forward history
+//         history.resize(currentIndex + 1);
+//         history.push_back(url);
+//         currentIndex++;
 //     }
     
-//     void addAtHead(int val) {
-//         ListNode* newNode = new ListNode(val);
-//         newNode->next = head;
-//         head = newNode;
-//         ++size;
+//     string back(int steps) {
+//         currentIndex = max(0, currentIndex - steps);
+//         return history[currentIndex];
 //     }
     
-//     void addAtTail(int val) {
-//         ListNode* newNode = new ListNode(val);
-//         if (head == NULL) {
-//             head = newNode;
-//         } else {
-//             ListNode* current = head;
-//             while (current->next != NULL) {
-//                 current = current->next;
-//             }
-//             current->next = newNode;
-//         }
-//         ++size;
+//     string forward(int steps) {
+//         currentIndex = min((int)history.size() - 1, currentIndex + steps);
+//         return history[currentIndex];
 //     }
-    
-//     void addAtIndex(int index, int val) {
-//         if (index < 0 || index > size) {
-//             return;
-//         }
-//         if (index == 0) {
-//             addAtHead(val);
-//         } else {
-//             ListNode* newNode = new ListNode(val);
-//             ListNode* current = head;
-//             for (int i = 0; i < index - 1; ++i) {
-//                 current = current->next;
-//             }
-//             newNode->next = current->next;
-//             current->next = newNode;
-//             ++size;
-//         }
-//     }
-    
-//     void deleteAtIndex(int index) {
-//         if (index < 0 || index >= size) {
-//             return;
-//         }
-//         if (index == 0) {
-//             ListNode* temp = head;
-//             head = head->next;
-//             delete temp;
-//         } else {
-//             ListNode* current = head;
-//             for (int i = 0; i < index - 1; ++i) {
-//                 current = current->next;
-//             }
-//             ListNode* temp = current->next;
-//             current->next = temp->next;
-//             delete temp;
-//         }
-//         --size;
-//     }
+
+// private:
+//     vector<string> history;
+//     int currentIndex;
 // };
